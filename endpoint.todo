@@ -1,0 +1,161 @@
+/*PRODUCTOS*/
+accion: "Lista productos"
+token: No
+verbo:GET
+rol: []
+endpoint:http:"//localhost:3000/api/productos";
+
+
+accion: "Crear productos"
+token: si
+verbo:POST
+rol: ["administrador"]
+endpoint:http:"//localhost:3000/api/productos";
+
+body:{
+    titulo:{type:String},
+
+    descripcion:{type:String},
+
+    precio:{type:Number},
+
+    imagen:{type:String, default:`../../public/images/default.jpeg`}
+}
+
+accion: "Ediar productos"
+token: si
+verbo:PUT
+rol: ["administrador"]
+endpoint:http:"//localhost:3000/api/productos/:id";
+body:{
+    titulo:{type:String},
+
+    descripcion:{type:String},
+
+    precio:{type:Number},
+
+    imagen:{type:String, default:`../../public/images/default.jpeg`}
+}
+
+accion: "Elimina productos"
+token: si
+verbo:DELETE
+rol: ["administrador"]
+endpoint:http:"//localhost:3000/api/productos/:id";
+
+
+/*USUARIOS*/
+
+accion: "Lista usuarios"
+token:Si
+verbo:GET
+rol: ["administrador"]
+endpoint:http:"//localhost:3000/api/usuarios";
+
+
+accion: "Crear usuarios"
+token: No
+verbo:POST
+rol: []
+endpoint:http:"//localhost:3000/api/usuarios";
+
+body:{
+    nombre:{
+        type:String,
+        unique:true,
+        required:true
+    },
+    email:{
+        type:String,
+        unique:true,
+        required:true
+    },
+    roles:[type:String ],
+
+    password:
+    {
+        type:String,
+        required:true
+    },
+    avatar:
+    {
+        type:String,
+        default:`../../public/images/default.jpeg`
+    }
+    
+}
+
+accion: "Ediar usuarios"
+token: si
+verbo:PUT
+rol: ["administrador"]
+endpoint:http:"//localhost:3000/api/usuarios/:id";
+body:{
+    nombre:{
+        type:String,
+        unique:true,
+        required:true
+    },
+    email:{
+        type:String,
+        unique:true,
+        required:true
+    },
+    roles:[type:String ],
+
+    password:
+    {
+        type:String,
+        required:true
+    },
+    avatar:
+    {
+        type:String,
+        default:`../../public/images/default.jpeg`
+    }
+    
+}
+
+accion: "Elimina usuarios"
+token: si
+verbo:DELETE
+rol: ["administrador"]
+endpoint:http:"//localhost:3000/api/usuarios/:id";
+
+
+header: x-access-token:Token(Lo creas al registrarte)
+
+/*USUARIO ADMIN*/
+
+body: {
+    "nombre":"adminDesarrolla",
+    "email":"info@desarroollaweb.com.ar",
+    "password":"desarrollaweb",
+    "roles":["administrador"],
+    "avatar":"https://desarrollaweb.com.ar/assets/images/logo-sin-fondo.png"
+    
+}
+
+{
+    "status": "Usuario Registrado",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMGFlMTMyNjliNTkxMzUyNTk5YWFlZCIsImlhdCI6MTYxMTMyNTc0NywiZXhwIjoxNjExNDEyMTQ3fQ.L2FhB4_eOkwr84nQ7e6vznEyhIMYBJ_WMdCYxA4ohrs"
+}
+
+/*USUARIO BASICO*/
+
+body:
+    {
+        "nombre":"userDesarrolla",
+        "email":"info-user@desarroollaweb.com.ar",
+        "password":"desarrollaweb",
+        "avatar":"https://desarrollaweb.com.ar/assets/images/logo-sin-fondo.png"
+        
+    }
+
+    {
+        "status": "Usuario Registrado",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMGFlMWY3NjliNTkxMzUyNTk5YWFmMSIsImlhdCI6MTYxMTMyNTk0MywiZXhwIjoxNjExNDEyMzQzfQ.CvIAkePufMXMBbI5w91Y-ZgHS2-ZzT1Nkgy3ss9WwzU"
+    }
+    
+
+   
